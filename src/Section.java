@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Section {
     private String facultyName, time24, weekDate;
     private int room, sectionNo, capacity, enrolled;
-    private ArrayList<String> enrolledIdList = new ArrayList<String>();
+    private ArrayList<String> enrolledIdList = new ArrayList<>();
 
     public Section(String facultyName, String time24, String weekDate, int room, int sectionNo, int capacity) {
         enrolled = 0;
@@ -15,6 +15,13 @@ public class Section {
         this.capacity = capacity;
     }
 
+    // method
+    void addId(String ID)
+    {
+        enrolledIdList.add(ID);
+    }
+
+    // getter and setter
     public String getFacultyName() {
         return facultyName;
     }
