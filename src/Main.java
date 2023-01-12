@@ -1,9 +1,10 @@
+import java.util.ArrayList;
+
 public class Main
 {
+  static ArrayList<Student> studentList;
+  static ArrayList<Course> courseList;
   public static void main(String[] args)
   {
-    System.out.println("Testing commit");
-    System.out.println("vfduhbaheb");
-    System.out.println("Something");
   }
 }
