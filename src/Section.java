@@ -1,88 +1,46 @@
 import java.util.ArrayList;
+import java.util.List;
 
-public class Section {
-    private String facultyName, time24, weekDate;
-    private int room, sectionNo, capacity, enrolled;
-    private ArrayList<String> enrolledIdList = new ArrayList<>();
+class Section {
+  private String facultyName;
+  private String time24;
+  private String weekDate;
+  private int room;
+  private int sectionNo;
+  private int capacity;
+  private int enrolled;
+  private List<String> enrolledIdList;
 
-    public Section(String facultyName, String time24, String weekDate, int room, int sectionNo, int capacity) {
-        enrolled = 0;
-        this.facultyName = facultyName;
-        this.time24 = time24;
-        this.weekDate = weekDate;
-        this.room = room;
-        this.sectionNo = sectionNo;
-        this.capacity = capacity;
+  public Section(String facultyName, String time24, String weekDate, int room, int sectionNo, int capacity) {
+    this.facultyName = facultyName;
+    this.time24 = time24;
+    this.weekDate = weekDate;
+    this.room = room;
+    this.sectionNo = sectionNo;
+    this.capacity = capacity;
+    this.enrolled = 0;
+    this.enrolledIdList = new ArrayList<>();
+  }
+
+  public void addEnrollment(String studentId) {
+    if (enrolled < capacity) {
+      enrolled++;
+      enrolledIdList.add(studentId);
+    } else {
+      System.out.println("Section is full, cannot add more enrollments");
     }
+  }
 
-    // method
-    void addId(String ID)
-    {
-        enrolledIdList.add(ID);
+  public void removeEnrollment(String studentId) {
+    if (enrolledIdList.contains(studentId)) {
+      enrolled--;
+      enrolledIdList.remove(studentId);
+    } else {
+      System.out.println("Student is not enrolled in this section");
     }
+  }
 
-    // getter and setter
-    public String getFacultyName() {
-        return facultyName;
-    }
-
-    public void setFacultyName(String facultyName) {
-        this.facultyName = facultyName;
-    }
-
-    public String getTime24() {
-        return time24;
-    }
-
-    public void setTime24(String time24) {
-        this.time24 = time24;
-    }
-
-    public String getWeekDate() {
-        return weekDate;
-    }
-
-    public void setWeekDate(String weekDate) {
-        this.weekDate = weekDate;
-    }
-
-    public int getRoom() {
-        return room;
-    }
-
-    public void setRoom(int room) {
-        this.room = room;
-    }
-
-    public int getSectionNo() {
-        return sectionNo;
-    }
-
-    public void setSectionNo(int sectionNo) {
-        this.sectionNo = sectionNo;
-    }
-
-    public int getCapacity() {
-        return capacity;
-    }
-
-    public void setCapacity(int capacity) {
-        this.capacity = capacity;
-    }
-
-    public int getEnrolled() {
-        return enrolled;
-    }
-
-    public void setEnrolled(int enrolled) {
-        this.enrolled = enrolled;
-    }
-
-    public ArrayList<String> getEnrolledIdList() {
-        return enrolledIdList;
-    }
-
-    public void setEnrolledIdList(ArrayList<String> enrolledIdList) {
-        this.enrolledIdList = enrolledIdList;
-    }
+  public int getAvailableCapacity() {
+    return capacity - enrolled;
+  }
 }
