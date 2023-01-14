@@ -171,9 +171,7 @@ public class CourseManager {
     Course course = Main.courseMap.get(courseCode);
     if(course != null)
     {
-      course.incrementSectionCount();
-      Section section = new Section(courseCode, time24, weekDate, room, course.getSectionCount(), capacity);
-      course.getSectionList().add(section);
+      course.addSection(time24, weekDate, room, capacity);
     }
     else
       System.out.println("Course not found!");
@@ -184,24 +182,7 @@ public class CourseManager {
     Course course = Main.courseMap.get(courseCode);
     if(course != null)
     {
-      for(Section section : course.getSectionList())
-      {
-        if (section.getSectionNo() == sectionNo)
-        {
-          course.decrementSectionCount();
-
-          String facultyName = section.getFacultyName();
-          if(section.getFacultyName().equals(facultyName))
-          {
-            Main.facultyMap.get(facultyName).getCourseList().get(courseCode).remove(sectionNo);
-          }
-
-          course.getSectionList().remove(sectionNo);
-          break;
-        }
-        else
-          System.out.println("Section not found!");
-      }
+      course.removeSection(sectionNo);
     }
     else
       System.out.println("Course not found!");
@@ -212,20 +193,24 @@ public class CourseManager {
     Course course = Main.courseMap.get(courseCode);
     if(course != null)
     {
-      for(Section section : course.getSectionList())
-      {
-        if(section.getSectionNo() == (sectionNo - 1))
-        {
-          section.setTime24(time24);
-          section.setWeekDate(weekDate);
-          section.setRoom(room);
-          section.setCapacity(capacity);
-
-          break;
-        }
-      }
+      course.updateSection(sectionNo, time24, weekDate, room, capacity);
     }
     else
       System.out.println("Course not found!");
+  }
+
+  public Section getSectionFromCurse(String courseCode, int sectionNo)
+  {
+    Course course = Main.courseMap.get((courseCode));
+    if(course != null)
+    {
+      return course.getSection(sectionNo);
+    }
+    else
+    {
+      System.out.println("Course not found!");
+
+      return null;
+    }
   }
 }

@@ -28,20 +28,8 @@ class Course
     this.sectionCount = 1;
   }
 
-  /*
-  public void addSection(Section section) {
-    sections.add(section);
-  }
 
-  public void removeSection(Section section) {
-    sections.remove(section);
-  }
-
-  public void updateSection(Section section) {
-    //update the section in the sections list
-  }
-   */
-
+  // methods
   public void incrementSectionCount()
   {
     sectionCount++;
@@ -54,6 +42,63 @@ class Course
       sectionCount--;
   }
 
+  public void addSection(String time24, String weekDate, int room, int capacity)
+  {
+    incrementSectionCount();
+    Section section = new Section(courseCode, time24, weekDate, room, getSectionCount(), capacity);
+    sectionList.add(section);
+  }
+
+  public void removeSection(int sectionNo)
+  {
+    for(Section section : getSectionList())
+    {
+      if (section.getSectionNo() == sectionNo)
+      {
+        decrementSectionCount();
+
+        String facultyName = section.getFacultyName();
+        if(section.getFacultyName().equals(facultyName))
+        {
+          Main.facultyMap.get(facultyName).getCourseList().get(courseCode).remove(sectionNo);
+        }
+
+        getSectionList().remove(sectionNo);
+        break;
+      }
+      else
+        System.out.println("Section not found!");
+    }
+  }
+
+  public void updateSection(int sectionNo, String time24, String weekDate, int room, int capacity)
+  {
+    for(Section section : getSectionList())
+    {
+      if(section.getSectionNo() == (sectionNo - 1))
+      {
+        section.setTime24(time24);
+        section.setWeekDate(weekDate);
+        section.setRoom(room);
+        section.setCapacity(capacity);
+
+        break;
+      }
+    }
+  }
+
+  public Section getSection(int sectionNo)
+  {
+    for(Section sec : getSectionList())
+    {
+      if(sec.getSectionNo() == sectionNo)
+      {
+        return sec;
+      }
+    }
+
+    return null;
+  }
 
   // getter and setter
   public String getDepartment()
