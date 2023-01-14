@@ -70,19 +70,63 @@ class Admin {
         courseManager.updateCourse(courseCode,departmentList,prerequisite,credit);
     }
 
-    /*
+
     public void addStudent() {
-       courseEnrollment.addStudent();
+
+        String name;
+        String studentID;
+        String department;
+        String semesterEnrolled;
+        String password;
+
+        System.out.println("Input the Student information to Add");
+        System.out.print("Input the Name: ");
+        name =  input.nextLine();
+        System.out.print("Input the Student ID: ");
+        studentID =  input.nextLine();
+        System.out.print("Input the department: ");
+        department =  input.nextLine();
+        System.out.print("Input the number of Semester Enrolled: ");
+        semesterEnrolled =  input.nextLine();
+        System.out.print("Input the Password: ");
+        password =  input.nextLine();
+
+       courseManager.addStudent(name, studentID, department, semesterEnrolled, password);
    }
 
-    public void removeStudent(String studentId) {
-        courseEnrollment.removeStudent(studentId);
+    public void removeStudent() {
+        String studentID;
+
+        System.out.println("Input the Student information to Remove");
+        System.out.print("Input the Student ID: ");
+        studentID =  input.nextLine();
+
+        courseManager.removeStudent(studentID);
     }
 
-    public void updateStudent(String studentId) {
-        courseEnrollment.updateStudent(studentId);
+    public void updateStudent() {
+
+        String studentID;
+        String name;
+        String department;
+        String semesterEnrolled;
+        String password;
+
+        System.out.println("Input the Student information to Add");
+        System.out.print("Input the Student ID: ");
+        studentID =  input.nextLine();
+        System.out.print("Input the Name: ");
+        name =  input.nextLine();
+        System.out.print("Input the department: ");
+        department =  input.nextLine();
+        System.out.print("Input the number of Semester Enrolled: ");
+        semesterEnrolled =  input.nextLine();
+        System.out.print("Input the Password: ");
+        password =  input.nextLine();
+
+        courseManager.updateStudent(studentID,name,department,semesterEnrolled,password);
     }
-    */
+
 
     public void addFaculty() {
         String name;
