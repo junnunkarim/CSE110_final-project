@@ -199,7 +199,7 @@ public class CourseManager {
       System.out.println("Course not found!");
   }
 
-  public Section getSectionFromCurse(String courseCode, int sectionNo)
+  public Section getSectionFromCourse(String courseCode, int sectionNo)
   {
     Course course = Main.courseMap.get((courseCode));
     if(course != null)
