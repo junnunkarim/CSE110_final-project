@@ -6,9 +6,9 @@ public class CourseManager {
   public CourseManager() {}
 
   // Method to add a new course
-  public void addCourse(String department, String courseCode, String prerequisite, double credit)
+  public void addCourse(List<String> departmentList, String courseCode, String prerequisite, double credit)
   {
-    Course course = new Course(department, courseCode, prerequisite, credit);
+    Course course = new Course(departmentList, courseCode, prerequisite, credit);
     Main.courseMap.put(courseCode, course);
   }
 
@@ -19,12 +19,12 @@ public class CourseManager {
   }
 
   // Method to update a course
-  public void updateCourse(String courseCode, String department, String prerequisite, double credit)
+  public void updateCourse(String courseCode, List<String> departmentList, String prerequisite, double credit)
   {
     Course course = Main.courseMap.get(courseCode);
 
     if(course != null){
-      course.setDepartment(department);
+      course.setDepartmentList(departmentList);
       course.setPrerequisite(prerequisite);
       course.setCredit(credit);
 
@@ -91,10 +91,13 @@ public class CourseManager {
   public void assignFacultyToCourse(String courseCode, String facultyName)
   {
     Course course = Main.courseMap.get(courseCode);
-    if(course != null){
+    if(course != null)
+    {
       Faculty faculty = Main.facultyMap.get(facultyName);
-      if(faculty != null){
-        course.getFacultyList().add(faculty.getName());
+      if(faculty != null)
+      {
+        if(course.getFacultyList().contains(faculty.getDepartment()))
+          course.getFacultyList().add(faculty.getName());
       }
     }
   }

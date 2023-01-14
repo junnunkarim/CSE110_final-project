@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 class Student {
   private String name;
   private String id;
@@ -10,8 +14,12 @@ class Student {
   private double termGpa;
   private int maxCourseLimit;
   private boolean probationStatus;
-  private List<Course> currentCourses;
-  private List<Course> completedCourses;
+  private List<String> currentCourseList; // courseCode
+  //private List<Course> completedCourseList;
+  private HashMap<String, Double> courseGradeList; // <courseCode, CGPA>
+  private HashMap<String, Boolean> courseEligibilityList;  // <courseCode, true of false> check what courses can the student take
+  private HashMap<String, Boolean> courseWithdrawStatus; // <courseCode, true or false>
+  private HashMap<String, Boolean> courseFailedStatus; // <courseCode, true or false>
 
   public Student(String name, String id, String department, String semesterEnrolled, String password) {
     this.name = name;
@@ -25,10 +33,18 @@ class Student {
     this.termGpa = 0.0;
     this.maxCourseLimit = 5;
     this.probationStatus = false;
-    this.currentCourses = new ArrayList<Course>();
-    this.completedCourses = new ArrayList<Course>();
+
+    currentCourseList = new ArrayList<>();
+    completedCourseList = new ArrayList<>();
+    courseGrade = new HashMap<>();
+
   }
 
+  // methods
+  public void updateCourseEligibilityList()
+  {
+
+  }
   public void enrollCourse(Course course) {
     if (currentCourses.size() < maxCourseLimit) {
       currentCourses.add(course);

@@ -3,23 +3,24 @@ import java.util.List;
 
 class Course
 {
-  private String department;
-  private String courseCode;
+  //private String department;
+  private String courseCode; // format: MAT104
   private String prerequisite;
   private double credit;
   //private String facultyName;
+  private List<String> departmentList;
   private List<Section> sectionList;
   private List<String> facultyList;
   private List<String> enrolledIdList;
 
   private int sectionCount;
 
-  public Course(String department, String courseCode, String prerequisite, double credit)
+  public Course(List<String> departmentList, String courseCode, String prerequisite, double credit)
   {
-    this.department = department;
     this.courseCode = courseCode;
     this.prerequisite = prerequisite;
     this.credit = credit;
+    this.departmentList = departmentList;
 
     sectionList = new ArrayList<>();
     facultyList = new ArrayList<>();
@@ -101,16 +102,6 @@ class Course
   }
 
   // getter and setter
-  public String getDepartment()
-  {
-    return department;
-  }
-
-  public void setDepartment(String department)
-  {
-    this.department = department;
-  }
-
   public String getCourseCode()
   {
     return courseCode;
@@ -179,5 +170,15 @@ class Course
   public void setSectionCount(int sectionCount)
   {
     this.sectionCount = sectionCount;
+  }
+
+  public List<String> getDepartmentList()
+  {
+    return departmentList;
+  }
+
+  public void setDepartmentList(List<String> departmentList)
+  {
+    this.departmentList = departmentList;
   }
 }

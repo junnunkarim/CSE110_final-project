@@ -6,13 +6,12 @@ import java.util.HashMap;
 
 class Main
 {
-  private CourseManager courseManager;
-  private CourseEnrollment courseEnrollment;
+  //private CourseManager courseManager;
+  //private CourseEnrollment courseEnrollment;
 
-  // HashMap to store courses, where the key is the courseCode and the value is the course object
-  static HashMap<String, Course> courseMap = new HashMap<>();
-  // HashMap to store faculty, where the key is the faculty name and the value is the faculty object
-  static HashMap<String, Faculty> facultyMap = new HashMap<>();
+  static HashMap<String, Course> courseMap = new HashMap<>(); // <courseCode, Course object>
+  static HashMap<String, Faculty> facultyMap = new HashMap<>(); // <facultyName, Faculty object>
+  static HashMap<String, Student> studentMap = new HashMap<>(); // <studentID, Student object>
 
   public static void main(String[] args)
   {
