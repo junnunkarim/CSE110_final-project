@@ -1,27 +1,67 @@
+import java.util.Scanner;
+
 class Admin {
     private String password;
+    Scanner input = new Scanner(System.in);
     private CourseManager courseManager = new CourseManager();
-    private CourseEnrollment courseEnrollment = new CourseEnrollment();
+    //private CourseEnrollment courseEnrollment = new CourseEnrollment();
 
     public Admin(String password) {
         this.password = password;
     }
 
     public void addCourse() {
-        courseManager.addCourse();
+
+        String department;
+        String courseCode;
+        String prerequisite;
+        double credit;
+
+        System.out.println("Input the Course information to add the Course");
+        System.out.print("Input the Department: ");
+        department =  input.nextLine();
+        System.out.print("Input the CourseCode: ");
+        courseCode =  input.nextLine();
+        System.out.print("Input the Prerequisite: ");
+        prerequisite =  input.nextLine();
+        System.out.print("Input the credit: ");
+        credit =  Double.parseDouble(input.nextLine());
+
+        courseManager.addCourse(department,courseCode,prerequisite,credit);
     }
 
-    public void removeCourse(String courseCode) {
+    public void removeCourse() {
+        String courseCode;
+        System.out.print("Input the CourseCode: ");
+        courseCode = input.nextLine();
         courseManager.removeCourse(courseCode);
     }
 
-    public void updateCourse(String courseCode) {
-        courseManager.updateCourse(courseCode);
+    public void updateCourse() {
+        String courseCode;
+        String department;
+        String prerequisite;
+        double credit;
+
+        System.out.println("Input the Course information to Update");
+
+        System.out.print("Input the CourseCode: ");
+        courseCode =  input.nextLine();
+        System.out.print("Input the Department: ");
+        department =  input.nextLine();
+
+        System.out.print("Input the Prerequisite: ");
+        prerequisite =  input.nextLine();
+        System.out.print("Input the credit: ");
+        credit =  Double.parseDouble(input.nextLine());
+
+        courseManager.updateCourse(courseCode,department,prerequisite,credit);
     }
 
+    /*
     public void addStudent() {
-        courseEnrollment.addStudent();
-    }
+       courseEnrollment.addStudent();
+   }
 
     public void removeStudent(String studentId) {
         courseEnrollment.removeStudent(studentId);
@@ -30,24 +70,68 @@ class Admin {
     public void updateStudent(String studentId) {
         courseEnrollment.updateStudent(studentId);
     }
+    */
 
     public void addFaculty() {
-        courseManager.addFaculty();
+        String name;
+        String department;
+
+        System.out.println("Input the Faculty information to Add");
+        System.out.print("Input the CourseCode: ");
+        name =  input.nextLine();
+        System.out.print("Input the Department: ");
+        department =  input.nextLine();
+
+        courseManager.addFaculty(name, department);
     }
 
-    public void removeFaculty(String facultyName) {
+    public void removeFaculty() {
+        String facultyName;
+
+        System.out.println("Input the Faculty information to remove");
+        System.out.print("Input the Faculty Name: ");
+        facultyName =  input.nextLine();
+
         courseManager.removeFaculty(facultyName);
     }
 
-    public void updateFaculty(String facultyName) {
-        courseManager.updateFaculty(facultyName);
+    public void updateFaculty() {
+
+        String name;
+        String department;
+
+        System.out.println("Input the Faculty information to Update");
+        System.out.print("Input the name: ");
+        name =  input.nextLine();
+        System.out.print("Input the Department: ");
+        department =  input.nextLine();
+
+        courseManager.updateFaculty(name, department);
     }
 
-    public void assignFacultyToCourse(String courseCode, String facultyName) {
+    public void assignFacultyToCourse() {
+        String courseCode;
+        String facultyName;
+
+        System.out.println("Input the information to assign Faculty to Course");
+        System.out.print("Input the Course Code: ");
+        courseCode =  input.nextLine();
+        System.out.print("Input the Faculty name: ");
+        facultyName =  input.nextLine();
+
         courseManager.assignFacultyToCourse(courseCode, facultyName);
     }
 
-    public void unassignFacultyFromCourse(String courseCode, String facultyName) {
+    public void unassignFacultyFromCourse() {
+        String courseCode;
+        String facultyName;
+
+        System.out.println("Input the information to unassign Faculty from the Course");
+        System.out.print("Input the Course Code: ");
+        courseCode =  input.nextLine();
+        System.out.print("Input the Faculty name: ");
+        facultyName =  input.nextLine();
+
         courseManager.unassignFacultyFromCourse(courseCode, facultyName);
     }
 }
