@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 class Admin {
@@ -12,22 +14,27 @@ class Admin {
 
     public void addCourse() {
 
-        String department;
+        List<String> departmentList = new ArrayList<>();
         String courseCode;
         String prerequisite;
         double credit;
 
         System.out.println("Input the Course information to add the Course");
-        System.out.print("Input the Department: ");
-        department =  input.nextLine();
+        System.out.println("Input the Departmentlist: ");
+        while(true){
+            System.out.print("Enter the Department: ");
+            String department =  input.nextLine();
+            if(department.equalsIgnoreCase("Q")) break;
+            departmentList.add(department);
+        }
         System.out.print("Input the CourseCode: ");
         courseCode =  input.nextLine();
-        System.out.print("Input the Prerequisite: ");
+        System.out.print("Input the Prerequisite(If none then write 'null'): ");
         prerequisite =  input.nextLine();
         System.out.print("Input the credit: ");
         credit =  Double.parseDouble(input.nextLine());
 
-        courseManager.addCourse(department,courseCode,prerequisite,credit);
+        courseManager.addCourse(departmentList,courseCode,prerequisite,credit);
     }
 
     public void removeCourse() {
@@ -39,7 +46,7 @@ class Admin {
 
     public void updateCourse() {
         String courseCode;
-        String department;
+        List<String> departmentList = new ArrayList<>();
         String prerequisite;
         double credit;
 
@@ -47,15 +54,20 @@ class Admin {
 
         System.out.print("Input the CourseCode: ");
         courseCode =  input.nextLine();
-        System.out.print("Input the Department: ");
-        department =  input.nextLine();
+        System.out.println("Input the Departmentlist: ");
+        while(true){
+            System.out.print("Enter the Department: ");
+            String department =  input.nextLine();
+            if(department.equalsIgnoreCase("Q")) break;
+            departmentList.add(department);
+        }
 
         System.out.print("Input the Prerequisite: ");
         prerequisite =  input.nextLine();
         System.out.print("Input the credit: ");
         credit =  Double.parseDouble(input.nextLine());
 
-        courseManager.updateCourse(courseCode,department,prerequisite,credit);
+        courseManager.updateCourse(courseCode,departmentList,prerequisite,credit);
     }
 
     /*
