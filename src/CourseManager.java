@@ -216,4 +216,31 @@ public class CourseManager {
       return null;
     }
   }
+
+  public void addStudent(String name, String studentID, String department, String semesterEnrolled, String password)
+  {
+    Student student = new Student(name, studentID, department, semesterEnrolled, password);
+    Main.studentMap.put(studentID, student);
+  }
+
+  public void removeStudent(String studentID)
+  {
+    if(Main.studentMap.containsKey(studentID))
+    {
+      Main.studentMap.remove(studentID);
+    }
+  }
+
+  public void updateStudent(String studentID, String name, String department, String semesterEnrolled, String password)
+  {
+    if(Main.studentMap.containsKey(studentID))
+    {
+      Student student = Main.studentMap.get(studentID);
+
+      student.setName(name);
+      student.setDepartment(department);
+      student.setSemesterEnrolled(semesterEnrolled);
+      student.setPassword(password);
+    }
+  }
 }
