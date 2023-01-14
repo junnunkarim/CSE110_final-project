@@ -9,14 +9,14 @@ public class SectionManager {
     sections = new HashMap<>();
   }
 
-  public void addSection(Section section) {
-    List<Section> courseSections = sections.get(section.getCourseCode());
+  public void addSection(String courseCode, Section section) {
+    List<Section> courseSections = sections.get(courseCode);
     if (courseSections != null) {
       courseSections.add(section);
     } else {
       courseSections = new ArrayList<>();
       courseSections.add(section);
-      sections.put(section.getCourseCode(), courseSections);
+      sections.put(courseCode, courseSections);
     }
   }
 
@@ -63,5 +63,15 @@ public class SectionManager {
       }
     }
     return availableSections;
+  }
+
+  public List<Section> getSections(String courseCode)
+  {
+    return sections.get(courseCode);
+  }
+
+  public void setSections(HashMap<String, List<Section>> sections)
+  {
+    this.sections = sections;
   }
 }

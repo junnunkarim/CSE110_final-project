@@ -1,5 +1,7 @@
 class Admin {
     private String password;
+    private CourseManager courseManager = new CourseManager();
+    private CourseEnrollment courseEnrollment = new CourseEnrollment();
 
     public Admin(String password) {
         this.password = password;
@@ -41,11 +43,11 @@ class Admin {
         courseManager.updateFaculty(facultyName);
     }
 
-    public void assignFaculty(String courseCode, String facultyName) {
-        courseManager.assignFaculty(courseCode, facultyName);
+    public void assignFacultyToCourse(String courseCode, String facultyName) {
+        courseManager.assignFacultyToCourse(courseCode, facultyName);
     }
 
-    public void removeFacultyAssignment(String courseCode, String facultyName) {
-        courseManager.removeFacultyAssignment(courseCode, facultyName);
+    public void unassignFacultyFromCourse(String courseCode, String facultyName) {
+        courseManager.unassignFacultyFromCourse(courseCode, facultyName);
     }
 }

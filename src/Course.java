@@ -1,22 +1,34 @@
 import java.util.ArrayList;
 import java.util.List;
 
-class Course {
+class Course
+{
   private String department;
   private String courseCode;
   private String prerequisite;
   private double credit;
-  private String facultyName;
-  private List<Section> sections;
+  //private String facultyName;
+  private List<Section> sectionList;
+  private List<String> facultyList;
+  private List<String> enrolledIdList;
 
-  public Course(String department, String courseCode, String prerequisite, double credit) {
+  private int sectionCount;
+
+  public Course(String department, String courseCode, String prerequisite, double credit)
+  {
     this.department = department;
     this.courseCode = courseCode;
     this.prerequisite = prerequisite;
     this.credit = credit;
-    sections = new ArrayList<Section>();
+
+    sectionList = new ArrayList<>();
+    facultyList = new ArrayList<>();
+    enrolledIdList = new ArrayList<>();
+
+    this.sectionCount = 1;
   }
 
+  /*
   public void addSection(Section section) {
     sections.add(section);
   }
@@ -28,52 +40,99 @@ class Course {
   public void updateSection(Section section) {
     //update the section in the sections list
   }
+   */
 
-  public String getDepartment() {
+  public void incrementSectionCount()
+  {
+    sectionCount++;
+  }
+  public void decrementSectionCount()
+  {
+    if(sectionCount <= 0)
+      sectionCount = 0;
+    else
+      sectionCount--;
+  }
+
+
+  // getter and setter
+  public String getDepartment()
+  {
     return department;
   }
 
-  public void setDepartment(String department) {
+  public void setDepartment(String department)
+  {
     this.department = department;
   }
 
-  public String getCourseCode() {
+  public String getCourseCode()
+  {
     return courseCode;
   }
 
-  public void setCourseCode(String courseCode) {
+  public void setCourseCode(String courseCode)
+  {
     this.courseCode = courseCode;
   }
 
-  public String getPrerequisite() {
+  public String getPrerequisite()
+  {
     return prerequisite;
   }
 
-  public void setPrerequisite(String prerequisite) {
+  public void setPrerequisite(String prerequisite)
+  {
     this.prerequisite = prerequisite;
   }
 
-  public double getCredit() {
+  public double getCredit()
+  {
     return credit;
   }
 
-  public void setCredit(double credit) {
+  public void setCredit(double credit)
+  {
     this.credit = credit;
   }
 
-  public String getFacultyName() {
-    return facultyName;
+  public List<Section> getSectionList()
+  {
+    return sectionList;
   }
 
-  public void setFacultyName(String facultyName) {
-    this.facultyName = facultyName;
+  public void setSectionList(List<Section> sectionList)
+  {
+    this.sectionList = sectionList;
   }
 
-  public List<Section> getSections() {
-    return sections;
+  public List<String> getFacultyList()
+  {
+    return facultyList;
   }
 
-  public void setSections(List<Section> sections) {
-    this.sections = sections;
+  public void setFacultyList(List<String> facultyList)
+  {
+    this.facultyList = facultyList;
+  }
+
+  public List<String> getEnrolledIdList()
+  {
+    return enrolledIdList;
+  }
+
+  public void setEnrolledIdList(List<String> enrolledIdList)
+  {
+    this.enrolledIdList = enrolledIdList;
+  }
+
+  public int getSectionCount()
+  {
+    return sectionCount;
+  }
+
+  public void setSectionCount(int sectionCount)
+  {
+    this.sectionCount = sectionCount;
   }
 }

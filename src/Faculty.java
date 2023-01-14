@@ -1,12 +1,55 @@
-class Faculty {
-  private String name;
-  private List<Course> assignedCourses;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
-  public Faculty(String name) {
+class Faculty
+{
+  private String name, department; // department format: CSE110
+  HashMap<String, List<Integer>> courseList; //<courseCode, Section list of that course>
+
+  //private List<Course> courseList;
+  //private List<Section> sectionList;
+
+  public Faculty(String name, String department)
+  {
     this.name = name;
-    this.assignedCourses = new ArrayList<Course>();
+    this.department = department;
+    courseList = new HashMap<String, List<Integer>>();
   }
 
+  // getter and setter
+
+  public String getName()
+  {
+    return name;
+  }
+
+  public void setName(String name)
+  {
+    this.name = name;
+  }
+
+  public String getDepartment()
+  {
+    return department;
+  }
+
+  public void setDepartment(String department)
+  {
+    this.department = department;
+  }
+
+  public HashMap<String, List<Integer>> getCourseList()
+  {
+    return courseList;
+  }
+
+  public void setCourseList(HashMap<String, List<Integer>> courseList)
+  {
+    this.courseList = courseList;
+  }
+
+  /*
   public void assignCourse(Course course) {
     this.assignedCourses.add(course);
   }
@@ -22,4 +65,5 @@ class Faculty {
   public List<Course> getAssignedCourses() {
     return this.assignedCourses;
   }
+   */
 }
