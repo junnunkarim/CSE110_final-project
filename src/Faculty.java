@@ -3,7 +3,8 @@ import java.util.List;
 
 class Faculty
 {
-  private String name, department; // department format: CSE
+  private String name;
+  private String department; // department format: CSE
   HashMap<String, List<Integer>> courseList; //<courseCode, Section list of that course>
 
   public Faculty(String name, String department)

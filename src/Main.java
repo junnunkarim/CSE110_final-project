@@ -1,14 +1,7 @@
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.HashMap;
 
 class Main
 {
-  //private CourseManager courseManager;
-  //private CourseEnrollment courseEnrollment;
-
   static HashMap<String, Course> courseMap = new HashMap<>(); // <courseCode, Course object>
   static HashMap<String, Faculty> facultyMap = new HashMap<>(); // <facultyName, Faculty object>
   static HashMap<String, Student> studentMap = new HashMap<>(); // <studentID, Student object>
@@ -16,16 +9,8 @@ class Main
   public static void main(String[] args)
   {
     Main main = new Main();
-    main.initialize();
-    main.run();
-  }
-
-  public void initialize()
-  {
-    courseManager = new CourseManager();
-    courseEnrollment = new CourseEnrollment();
-
-    loadData();
+    Initialize initialize = new Initialize();
+    initialize.loadDatabase();
   }
 
   public void run()
@@ -82,55 +67,5 @@ class Main
 
     input.close();
      */
-  }
-
-  public void loadData()
-  {
-    try
-    {
-      FileInputStream fis = new FileInputStream("courses.dat");
-      ObjectInputStream ois = new ObjectInputStream(fis);
-
-      courseManager = (CourseManager) ois.readObject();
-
-      fis = new FileInputStream("enrollments.dat");
-      ois = new ObjectInputStream(fis);
-
-      courseEnrollment = (CourseEnrollment) ois.readObject();
-
-      ois.close();
-      fis.close();
-
-      System.out.println("Data loaded successfully");
-    }
-    catch (Exception e)
-    {
-      System.out.println("Error loading data: " + e.getMessage());
-    }
-  }
-
-  public void saveData()
-  {
-    try
-    {
-      FileOutputStream fos = new FileOutputStream("courses.dat");
-      ObjectOutputStream oos = new ObjectOutputStream(fos);
-
-      oos.writeObject(courseManager);
-
-      fos = new FileOutputStream("enrollments.dat");
-      oos = new ObjectOutputStream(fos);
-
-      oos.writeObject(courseEnrollment);
-
-      oos.close();
-      fos.close();
-
-      System.out.println("Data saved successfully");
-    }
-    catch (Exception e)
-    {
-      System.out.println("Error saving data: " + e.getMessage());
-    }
   }
 }

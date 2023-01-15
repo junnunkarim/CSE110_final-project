@@ -7,13 +7,12 @@ class Course
   private String courseCode; // format: MAT104
   private String prerequisite;
   private double credit;
+  private int sectionCount;
   //private String facultyName;
   private List<String> departmentList;
-  private List<Section> sectionList;
   private List<String> facultyList;
   private List<String> enrolledIdList;
-
-  private int sectionCount;
+  private List<Section> sectionList;
 
   public Course(List<String> departmentList, String courseCode, String prerequisite, double credit)
   {
